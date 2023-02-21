@@ -333,19 +333,36 @@ class caldav_driver extends calendar_driver
     public function create_source($source)
     {
         $source['caldav_url'] = self::_encode_url($source['caldav_url']);
-
-        // Skip already exiting sources
-        $result = $this->rc->db->query("SELECT user_id, caldav_url, caldav_user FROM " . $this->db_sources . " WHERE user_id=? AND caldav_url=? AND caldav_user=?", $this->rc->user->ID, $source['caldav_url'], $source['caldav_user']);
-        if($this->rc->db->affected_rows($result)) return true;
-
-        try {
+             
+        // Re-discover all existing calendars systematically
+        try {               
             $calendars = $this->_autodiscover_calendars($source);
-        }
+        }   
         catch(Exception $e) {
             self::debug_log($e);
             $this->rc->output->show_message($this->cal->gettext('source_notadded_error'), 'error');
             return false;
         }
+       
+        // Remove local data associated with deprecated calendars
+        $caldav_urls = array_column($calendars, 'href');
+        $query = $this->rc->db->query(
+            "DELETE FROM " . $this->db_calendars . " WHERE user_id=? AND caldav_url NOT IN ('" . implode("','", $caldav_urls) . "')",
+            $this->rc->user->ID);
+        $this->rc->db->affected_rows($query);
+            
+        // Skip update if the set of available calendars matches
+        $result = $this->rc->db->query(
+            "SELECT calendar_id FROM " . $this->db_calendars . " WHERE user_id=? AND caldav_url LIKE ?",
+            $this->rc->user->ID, $source['caldav_url'] . '%');
+        $count_cur = $this->rc->db->num_rows($result);
+        $count_avail = count($calendars);
+        if ($count_cur == $count_avail)
+        {   
+            self::debug_log("Skip source update.");
+            return true;
+        }           
+
         if(count($calendars)) {
             $pass = isset($source['caldav_pass']) ? $this->_encrypt_pass($source['caldav_pass']) : null;
             $db_source_result = $this->rc->db->query(
