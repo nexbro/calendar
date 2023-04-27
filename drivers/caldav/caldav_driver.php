@@ -412,7 +412,7 @@ class caldav_driver extends calendar_driver
             $this->rc->user->ID,
             $source ? $source['source_id'] : null,
             $prop['name'],
-            $prop['color'],
+            isset($prop['color']) ? $prop['color'] : '#cc0000',
             $prop['showalarms']?1:0,
             $prop['caldav_url'],
             isset($prop["caldav_tag"]) ? $prop["caldav_tag"] : null,
