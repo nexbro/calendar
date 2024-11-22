@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "047965103e4da6ecf9108ffd1a03dfcb",
+    "content-hash": "5ca2424bd2e0580fe3911831e1b96539",
     "packages": [
         {
             "name": "caxy/php-htmldiff",
