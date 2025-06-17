@@ -4,7 +4,7 @@
     "description": "Calendar plugin",
     "homepage": "https://git.kolab.org/diffusion/RPK/",
     "license": "AGPLv3",
-    "version": "3.5.12",
+    "version": "3.5.13",
     "authors": [
         {
             "name": "Thomas Bruederli",
@@ -24,7 +24,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/JodliDev/libcalendaring"
+            "url": "https://github.com/nexbro/libcalendaring"
         }
     ],
     "require": {

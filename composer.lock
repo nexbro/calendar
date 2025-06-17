@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ca2424bd2e0580fe3911831e1b96539",
+    "content-hash": "24a1bc2a3640c9ecc0488f8dc35fb253",
     "packages": [
         {
             "name": "caxy/php-htmldiff",
@@ -132,13 +132,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/JodliDev/libcalendaring.git",
-                "reference": "384ee2a0a6030b7d1df07edaa4b750238e30c941"
+                "url": "https://github.com/nexbro/libcalendaring.git",
+                "reference": "8ae054693d0a1cd54d7b30af8fa16d84468737a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JodliDev/libcalendaring/zipball/384ee2a0a6030b7d1df07edaa4b750238e30c941",
-                "reference": "384ee2a0a6030b7d1df07edaa4b750238e30c941",
+                "url": "https://api.github.com/repos/nexbro/libcalendaring/zipball/8ae054693d0a1cd54d7b30af8fa16d84468737a4",
+                "reference": "8ae054693d0a1cd54d7b30af8fa16d84468737a4",
                 "shasum": ""
             },
             "require": {
@@ -166,10 +166,9 @@
             "description": "Library providing common functions for calendaring plugins",
             "homepage": "https://git.kolab.org/diffusion/RPK/",
             "support": {
-                "source": "https://github.com/JodliDev/libcalendaring/tree/master",
-                "issues": "https://github.com/JodliDev/libcalendaring/issues"
+                "source": "https://github.com/nexbro/libcalendaring/tree/master"
             },
-            "time": "2022-05-16T08:13:34+00:00"
+            "time": "2025-06-17T12:09:38+00:00"
         },
         {
             "name": "kolab/libkolab",
